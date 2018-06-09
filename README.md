@@ -243,7 +243,7 @@ end
 
 
 
-5.LOOPS & ITERATORS
+## 5.LOOPS & ITERATORS
 
 1.  The 'While' Loop
 
@@ -360,7 +360,7 @@ end
 
 
 
-## 5.REDACTED
+## 6.REDACTED
 
 1. Split Method
 
