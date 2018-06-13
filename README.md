@@ -840,3 +840,84 @@ puts alphabetize(books)
 puts alphabetize(books, true)
 ```
 
+# 6.Hashes and Symbols
+
+## 11.hashes and symbols
+
+1. Iterating over Hashes
+
+해시를 만드는 방법은 두가지가 있습니다.
+
+  *1) hash literal notaiotn*
+
+```ruby
+new_hash = { "one" => 1 }
+```
+
+*2) hash constructor notation*
+
+```ruby
+new_hash = Hash.new
+```
+
+
+
+2.  Iterating Over Hashes
+
+   hash에서 value를 반복문을 통해 받아봅시다.
+
+   ```ruby
+   matz = { "First name" => "Yukihiro",
+     "Last name" => "Matsumoto",
+     "Age" => 47,
+     "Nationality" => "Japanese",
+     "Nickname" => "Matz"
+   }
+   
+   matz.each do |key, value|
+     puts value
+   end
+   
+   =begin
+   result = 
+   
+   Yukihiro
+   Matsumoto
+   47
+   Japanese
+   Matz
+   
+   
+   =end
+   ```
+
+3. `Nil`: a Formal Introduction
+
+   많은 언어에 있어, 당신은 존재하지않는 값을 불러오려고 하면 에러를 볼 수 있을 겁니다. 하지만, Ruby에서는 좀 다릅니다. `nil`이라는 것이 있기 때문이죠!
+
+   `false`와 같이 `nil`은 `non-true value`중에 하나입니다. 
+
+   `false`와 `nil`은 다른 것입니다. `false`는 `not true`를 의미하지만, `nil`은 `nothing at all`을 의미하기 때문이죠.
+
+```ruby
+creatures = { "weasels" => 0,
+  "puppies" => 6,
+  "platypuses" => 3,
+  "canaries" => 1,
+  "Heffalumps" => 7,
+  "Tiggers" => 1
+}
+
+creatures["birds"]
+```
+
+4. Setting Your Own Default
+
+   하지만 기본 값으로 `nil`에 만족할 필요는 없습니다. `Hash.new`구문을 사용하여 해시를 생성하는 경우 다음과 같이 기본 값을 지정할 수 있습니다.
+
+   ```ruby
+   my_hash = Hash.new("Trady Blix")
+   ```
+
+    이제 `my_hash`에 존재하지 않는 키에 액세스 하려고 하면 `TradyBlix`가 표시됩니다. 
+
