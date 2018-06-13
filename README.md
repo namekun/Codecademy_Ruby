@@ -887,7 +887,6 @@ new_hash = Hash.new
    Japanese
    Matz
    
-   
    =end
    ```
 
@@ -895,7 +894,7 @@ new_hash = Hash.new
 
    많은 언어에 있어, 당신은 존재하지않는 값을 불러오려고 하면 에러를 볼 수 있을 겁니다. 하지만, Ruby에서는 좀 다릅니다. `nil`이라는 것이 있기 때문이죠!
 
-   `false`와 같이 `nil`은 `non-true value`중에 하나입니다. 
+   `false`와 같이 `nil`은 `non-true value`중에 하나라고 할 수 있습니다. (다른 모든 객체는 "진실"로 간주됩니다. 즉, `if 2`를 입력하거나 `if "bacon" `이라고 입력하면 if 문에있는 코드가 실행됩니다.)
 
    `false`와 `nil`은 다른 것입니다. `false`는 `not true`를 의미하지만, `nil`은 `nothing at all`을 의미하기 때문이죠.
 
@@ -908,7 +907,7 @@ creatures = { "weasels" => 0,
   "Tiggers" => 1
 }
 
-creatures["birds"]
+creatures["birds"] # nil
 ```
 
 4. Setting Your Own Default
