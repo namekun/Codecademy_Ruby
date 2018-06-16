@@ -720,7 +720,7 @@ capitalize("jane") # prints "Jane"
 7. Code Block을 사용해봅시다.
 
 - 메소드는 블록을 매개변수로 가질 수 있습니다. 이는 마치 `.each`가 블록을 매개변수로 받은 뒤, 반복적인 작업을 진행하는 것과 같습니다! 그 동안은 `.each`에서 괄호를 생략해왔기 때문에, 아마 여러분은 눈치채지 못했을겁니다. 
-- 블록을 메소드에 전달하는 것은 메소드의 특정 작업을 **추상화(abstracting)** 하는 좋은 방법이자, 메소드가 호출되었을 때 해당 작업을 정의하는 훌륭한 방법입니다. 추상화는 컴퓨터 과학의 아주 중요한 개념으로, 추상화란 "어떤것을 간단하게 만드는 것"이라고 볼 수 있습니다. 여러분이 새로운 집을 구경하러 간다고 할 때, "콘크리트, 합판, 비닐 슬라이드로 이루어진 구조물을 보러가자!"라고 말하는 건 말 그대로 정신나간 소리처럼 들리죠! 단지 "집을 구경하러 갑시다" 라고 이야기 하는 것이 집의 구성 요소를 모두 다 언급하는 것 보다 훨씬 간단할 겁니다. 이처럼 블록을 이용해서 메소드가 하는 일을 정의하는 것은 (마치 `.each` 처럼) 해당 작업을 단순화 시킵니다. 
+- 블록을 메소드에 전달하는 것은 메소드의 특정 작업을 **추상화(abstracting)**하는 좋은 방법이자, 메소드가 호출되었을 때 해당 작업을 정의하는 훌륭한 방법입니다. 추상화는 컴퓨터 과학의 아주 중요한 개념으로, 추상화란 "어떤것을 간단하게 만드는 것"이라고 볼 수 있습니다. 여러분이 새로운 집을 구경하러 간다고 할 때, "콘크리트, 합판, 비닐 슬라이드로 이루어진 구조물을 보러가자!"라고 말하는 건 말 그대로 정신나간 소리처럼 들리죠! 단지 "집을 구경하러 갑시다" 라고 이야기 하는 것이 집의 구성 요소를 모두 다 언급하는 것 보다 훨씬 간단할 겁니다. 이처럼 블록을 이용해서 메소드가 하는 일을 정의하는 것은 (마치 `.each` 처럼) 해당 작업을 단순화 시킵니다. 
 
 ```ruby
 # The block, {|i| puts i}, is passed the current
@@ -840,31 +840,27 @@ puts alphabetize(books)
 puts alphabetize(books, true)
 ```
 
-# 6.Hashes and Symbols
+# 6.HASHES AND SYMBOLS
 
-## 11.hashes and symbols
+## 12) Hashes and Symbols
 
-1. Iterating over Hashes
+1. hash 생성에는 2가지 방법이 있습니다
 
-해시를 만드는 방법은 두가지가 있습니다.
-
-  *1) hash literal notaiotn*
+   *1.hash literal notation*
 
 ```ruby
 new_hash = { "one" => 1 }
 ```
 
-*2) hash constructor notation*
+​    *2. hash constructor notation* 
 
-```ruby
+     ```ruby
 new_hash = Hash.new
-```
+     ```
 
+2. hash에서의 반복처리
 
-
-2.  Iterating Over Hashes
-
-   hash에서 value를 반복문을 통해 받아봅시다.
+   hash에서의 반복은 다음과 같이 `.each`문을 통해 처리할 수 있습니다.
 
    ```ruby
    matz = { "First name" => "Yukihiro",
@@ -879,7 +875,7 @@ new_hash = Hash.new
    end
    
    =begin
-   result = 
+   result =
    
    Yukihiro
    Matsumoto
@@ -890,33 +886,243 @@ new_hash = Hash.new
    =end
    ```
 
-3. `Nil`: a Formal Introduction
+3. nil
 
-   많은 언어에 있어, 당신은 존재하지않는 값을 불러오려고 하면 에러를 볼 수 있을 겁니다. 하지만, Ruby에서는 좀 다릅니다. `nil`이라는 것이 있기 때문이죠!
+      만약 존재하지 않는 키를 통해서 접근하고자 한다면 어떻게 될까요?
 
-   `false`와 같이 `nil`은 `non-true value`중에 하나라고 할 수 있습니다. (다른 모든 객체는 "진실"로 간주됩니다. 즉, `if 2`를 입력하거나 `if "bacon" `이라고 입력하면 if 문에있는 코드가 실행됩니다.)
+      많은 언어에서는 아마 에러가 발생할 것입니다. 그러나 루비에서는 당신은 `nil`이라는 특별한 값을 얻을 수 있습니다.
 
-   `false`와 `nil`은 다른 것입니다. `false`는 `not true`를 의미하지만, `nil`은 `nothing at all`을 의미하기 때문이죠.
+      `false`와 함께, `nil`은 두개의 `true`값이 아닌 것 중에 하나입니다. (모든 다른 객체들은  `if 2`, `if "bacon"` 과 같이 `if`문에서 실행되는 것처럼 진실로 여겨집니다.)
 
-```ruby
-creatures = { "weasels" => 0,
-  "puppies" => 6,
-  "platypuses" => 3,
-  "canaries" => 1,
-  "Heffalumps" => 7,
-  "Tiggers" => 1
-}
-
-creatures["birds"] # nil
-```
-
-4. Setting Your Own Default
-
-   하지만 기본 값으로 `nil`에 만족할 필요는 없습니다. `Hash.new`구문을 사용하여 해시를 생성하는 경우 다음과 같이 기본 값을 지정할 수 있습니다.
+      `false`와 `nil`이 같은 것이 아니라는 것은 매우 중요합니다. `false`의 의미는 `not true`이지만, `nil`은 루비에서 `nothing at all` , 즉 아무것도 없다 라는 의미이거든요.
 
    ```ruby
-   my_hash = Hash.new("Trady Blix")
+   creatures = { "weasels" => 0,
+     "puppies" => 6,
+     "platypuses" => 3,
+     "canaries" => 1,
+     "Heffalumps" => 7,
+     "Tiggers" => 1
+   }
+   
+   creatures["birds"] # nil
    ```
 
-    이제 `my_hash`에 존재하지 않는 키에 액세스 하려고 하면 `TradyBlix`가 표시됩니다. 
+4. `nil`일 때 출력해줄 기본값 정하기
+
+      - hash를 생성할 때, 입력받은 키값이 nil 값이라면 출력해줄 기본값을 정해줍니다.
+
+      ```ruby
+      no_nil_hash = Hash.new("no nil!") # no_nil_hash에 nil값이면 "no nil!"을 출력해준다.
+      ```
+
+5. Symbol => `:fdf =>3 ` 이런식으로 사용한다.
+
+   ```ruby
+   menagerie = { :foxes => 2,
+     :giraffe => 1,
+     :weezards => 17,
+     :elves => 1,
+     :canaries => 4,
+     :ham => 1
+   }
+   ```
+
+6. Symbol과 string이 다른점?
+
+     * key값이 있다는 것.
+
+7. Symbol Syntax
+
+     * 심볼은 다음과 같은 방식으로 선언합니다.
+
+     ```ruby
+     :my_symbol
+     :my symbol # 이렇게 선언하면 안됩니다.
+     ```
+
+8. symbol은 어디에 쓰이는가?
+
+   * hash 키 또는 참조 메소드의 이름으로 사용됩니다.
+   * symbol은 다음과 같은 이유로 좋은 hash key를 만들 수 있습니다.
+     1. 한번 만들어지면 변경이 불가능합니다. 
+     2. 한번에 한개의 심볼만 존재하게 되므로, 메모리가 절약됩니다.
+     3. 위의 두가지 이유로 심볼보다 키가 더 빠릅니다.
+
+   ```ruby
+   symbol_hash = {
+     :one => 1,
+     :two => 2,    # Fill in these two blanks!
+     :three =>3
+   }
+   ```
+
+9. symbol => strings
+
+   ```ruby
+   strings = ["HTML", "CSS", "JavaScript", "Python", "Ruby"]
+   symbols = []
+   
+   strings.each do |s| 
+    symbols.push(s.to_sym)
+   end 
+   print symbols
+   ```
+
+10. `.intern`
+       * `.to_sym` 은 `.intern`과 같은 기능을 지닌다.
+
+   ```ruby
+   strings = ["HTML", "CSS", "JavaScript", "Python", "Ruby"]
+   symbols = []
+   
+   strings.each do |s| 
+    symbols.push(s.intern)
+   end 
+   print symbols
+   ```
+
+11. Hash Rocket!
+       * 해쉬 로켓은 => 의 모양이 로켓처럼 생겨서 붙은 별명이다.
+
+   ```ruby
+   numbers = {
+     :one => 1,
+     :two => "two",
+     :three => 3,
+   }
+   ```
+
+12. Hash Rocket 착륙!
+
+       * 그러나 로켓 구문은 루비1.9에서 부터 변경되었습니다. 변경사항은 다음과 같습니다.
+         1. 시작 부분이 아니라 기호의 끝에 `:`을 넣습니다.
+         2. 더이상 해시 로켓이 필요하지 않습니다!
+
+       ```ruby
+       movies = {
+         lomantic: 'about_time',
+         fantasy: 'Dr.strange',
+         }
+       ```
+
+13. Hash Search VS String Key
+
+   * 해시검색은 문자열키 검색보다 더 빠릅니다! 다음 결과를 봐주세요
+
+   ```ruby
+   require 'benchmark'
+   
+   string_AZ = Hash[("a".."z").to_a.zip((1..26).to_a)]
+   symbol_AZ = Hash[(:a..:z).to_a.zip((1..26).to_a)]
+   
+   string_time = Benchmark.realtime do
+     100_000.times { string_AZ["r"] }
+   end
+   
+   symbol_time = Benchmark.realtime do
+     100_000.times { symbol_AZ[:r] }
+   end
+   
+   puts "String time: #{string_time} seconds."
+   puts "Symbol time: #{symbol_time} seconds."
+   
+   #String time: 0.009227719157934189 seconds.
+   #Symbol time: 0.0056778742000460625 seconds.
+   ```
+
+14. `Select` 문을 사용해보자 
+
+* 특정 기준을 충족하는 어떤 값을 갖고 오고싶다면 `select`문을 사용해야합니다.
+
+```ruby
+grades = { alice: 100,
+  bob: 92,
+  chris: 95,
+  dave: 97
+}
+
+grades.select { |name, grade| grade <  97 }
+# ==> { :bob => 92, :chris => 95 }
+
+grades.select { |k, v| k == :alice }
+# ==> { :alice => 100 }
+```
+
+15. `.each_key`, `.each_values`
+
+* 두 메소드를 통해 우리는 해시안에 모든 키와 벨류를 좀더 쉽게 불러올 수 있습니다.
+
+```ruby
+my_hash = { one: 1, two: 2, three: 3 }
+
+my_hash.each_key { |k| print k, " " }
+# ==> one two three
+
+my_hash.each_value { |v| print v, " " }
+# ==> 1 2 3
+```
+
+## 13) A Night at the Movies
+
+1. 무엇을 만들 것인가?
+
+* 해시에 새 영화를 추가하고, 기존의 영화들을 업데이트하고, 표시하고, 삭제할 수 있는 메소드를 만들고자 한다. 
+
+```ruby
+movies = {
+  Memento: 3,
+  Primer: 4,
+  Ishtar: 1
+}
+
+puts "What would you like to do?"
+puts "-- Type 'add' to add a movie."
+puts "-- Type 'update' to update a movie."
+puts "-- Type 'display' to display all movies."
+puts "-- Type 'delete' to delete a movie."
+
+choice = gets.chomp.downcase
+case choice
+when 'add'
+  puts "What movie do you want to add?"
+  title = gets.chomp
+  if movies[title.to_sym].nil?
+    puts "What's the rating? (Type a number 0 to 4.)"
+    rating = gets.chomp
+    movies[title.to_sym] = rating.to_i
+    puts "#{title} has been added with a rating of #{rating}."
+  else
+    puts "That movie already exists! Its rating is #{movies[title.to_sym]}."
+  end
+when 'update'
+  puts "What movie do you want to update?"
+  title = gets.chomp
+  if movies[title.to_sym].nil?
+    puts "Movie not found!"
+  else
+    puts "What's the new rating? (Type a number 0 to 4.)"
+    rating = gets.chomp
+    movies[title.to_sym] = rating.to_i
+    puts "#{title} has been updated with new rating of #{rating}."
+  end
+when 'display'
+  movies.each do |movie, rating|
+    puts "#{movie}: #{rating}"
+  end
+when 'delete'
+  puts "What movie do you want to delete?"
+  title = gets.chomp
+  if movies[title.to_sym].nil?
+    puts "Movie not found!"
+  else
+    movies.delete(title.to_sym)
+    puts "#{title} has been removed."
+  end
+else
+  puts "Sorry, I didn't understand you."
+end
+```
+
+
 
